@@ -1,0 +1,253 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to right, #f9f9f9, #e0f7fa);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    text-align: center;
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+#text {
+    font-size: 28px;
+    margin-bottom: 20px;
+    transition: font-family 0.5s ease, color 0.3s ease;
+}
+
+#logo {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #00796b;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004d40;
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.day-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    display: block;
+}
+
+.day-background .sun {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255, 255, 0, 0.6);
+}
+
+.day-background .cloud {
+    position: absolute;
+    background-color: #80d0e7;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: moveClouds 10s linear infinite;
+}
+
+@keyframes moveClouds {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.day-background .cloud1 {
+    width: 220px;
+    height: 120px;
+    top: 10%;
+    left: 5%;
+    border-radius: 50% 50% 30% 30%;
+}
+
+.day-background .cloud2 {
+    width: 250px;
+    height: 140px;
+    top: 30%;
+    left: 40%;
+    border-radius: 50% 40% 30% 20%;
+}
+
+.day-background .cloud3 {
+    width: 180px;
+    height: 100px;
+    top: 20%;
+    left: 70%;
+    border-radius: 50% 40% 50% 30%;
+}
+
+.day-background .bird {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('BIRD.png') no-repeat center center;
+    background-size: cover;
+    animation: flyBird 15s ease-in-out infinite;
+}
+
+@keyframes flyBird {
+    0% { left: 0%; top: 10%; transform: translateY(0); }
+    20% { left: 25%; top: 15%; transform: translateY(-10px); }
+    40% { left: 50%; top: 5%; transform: translateY(10px); }
+    60% { left: 75%; top: 20%; transform: translateY(0); }
+    80% { left: 100%; top: 15%; transform: translateY(-10px); }
+    100% { left: 0%; top: 10%; transform: translateY(0); }
+}
+
+.dark-mode {
+  background: linear-gradient(to right, #121212, #1e1e1e);
+  color: #ffffff;
+}
+
+.dark-mode .container {
+  background: #2c2c2c;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode #text {
+  color: #ffffff;
+}
+
+.dark-mode .button-group button {
+  background-color: #004d40;
+}
+
+.dark-mode .button-group button:hover {
+  background-color: #00796b;
+}
+
+.night-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  display: none;
+}
+
+.night-background .moon {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 80px;
+  height: 80px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.night-background .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgb(245, 245, 245);
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: starTwinkle 2s infinite ease-in-out alternate, starDrift 60s linear infinite;
+  }
+
+  @keyframes starTwinkle {
+    0% { opacity: 0.2; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes starDrift {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+  }
+
+.night-background .firefly {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #ffeb3b;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: fireflyGlow 2s infinite alternate ease-in-out, fireflyDrift 12s ease-in-out infinite;
+}
+
+@keyframes fireflyGlow {
+  0% { box-shadow: 0 0 2px #ffeb3b; }
+  100% { box-shadow: 0 0 10px #ffeb3b; }
+}
+
+@keyframes fireflyDrift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(30px, -20px); }
+  50% { transform: translate(60px, 10px); }
+  75% { transform: translate(30px, 30px); }
+  100% { transform: translate(0, 0); }
+}
+
+@media (max-width: 500px) {
+  #text {
+    font-size: 22px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 20px 15px;
+  }
+}
